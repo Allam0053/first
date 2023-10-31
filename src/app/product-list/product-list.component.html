@@ -1,0 +1,25 @@
+<ng-container *subscribe="products$ as products">
+    <div class="product-list">
+        <h2>Product List</h2>
+
+        <p *ngIf="products.isError">Error...</p>
+
+        <!-- <p>
+            {{ JSON.stringify(products.data?.products) }}
+        </p> -->
+
+        <ul *ngIf="products.isSuccess && products.data?.products">
+            <li *ngFor="let product of products.data?.products" style="display: flex; flex-direction: column; margin-bottom: 8px; font-size: 12px; font-family: sans-serif;">
+                <p style="font-weight: 600; margin: 0;">
+                    {{ product.category }}
+                </p>
+                <p style="font-weight: 600; margin: 0;">
+                    {{ product.brand }} | {{ product.title }}
+                </p>
+                <p style="font-weight: 600; margin: 0; color: gray;">
+                    $ {{ product.price }}
+                </p>
+            </li>
+        </ul>
+    </div>
+</ng-container>
